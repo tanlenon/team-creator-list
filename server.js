@@ -23,6 +23,7 @@ app.post('/api/teams', (req, res) => {
     sport: req.body.sport,
     color1: req.body.color1,
     color2: req.body.color2,
+    // logo: req.body.logo,
   };
   teams.push(team);
   res.send(team);
@@ -39,6 +40,7 @@ app.put('/api/teams/:id', (req, res) => {
   team.sport = req.body.sport;
   team.color1 = req.body.color1;
   team.color2 = req.body.color2;
+  // team.logo = req.body.logo;
 
   // handle drag and drop re-ordering
   if (req.body.orderChange) {
