@@ -1,0 +1,112 @@
+body {
+    font-family: 'Arvo';
+    font-size: 16px;
+    background: #f3f3f3;
+    margin: 0px;
+    height: 100%;
+}
+
+#app {
+    padding: 20px 100px 0px 100px;
+    margin-bottom: -110px;
+    min-height: 100%;
+}
+
+#app:after {
+    content:"";
+    display: block;
+}
+
+/* List */
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: #fff;
+    width: 500px;
+    min-height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.delete {
+    display: none;
+    margin-left: auto;
+}
+
+li:hover .delete {
+    display: block;
+}
+
+label {
+    width: 400px;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+/* Form */
+
+input[type=checkbox] {
+    transform: scale(1.5);
+    margin-right: 10px;
+}
+
+input[type=text] {
+    font-size: 1em;
+}
+
+button {
+    font-family: 'Arvo';
+    font-size: 1em;
+}
+
+/* Controls */
+
+.controls {
+    margin-top: 20px;
+}
+
+.form-item {
+    margin: 15px;
+}
+
+.arrow {
+    height: 25px;
+    width: 25px;
+    margin: 0 10px;
+}
+
+.footer, #app:after {
+    height: 110px;
+}
+
+footer {
+   background-color: #3E606F;
+   color: #91AAB4;
+   padding: 20px;
+   text-align: center;
+   font-family: 'Roboto', sans-serif;
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+}
+
+footer a {
+    color: #CBDBD7;
+    font-family: 'Roboto', sans-serif;
+}
+
+footer a:hover {
+    color: #FCFFF5;;
+}
+
+.list {
+    margin-bottom: 100px;
+}

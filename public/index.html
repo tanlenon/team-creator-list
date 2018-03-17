@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css"/>
+    <title>Vue Todo</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>A List of Things To Do</h1>
+      <p v-show="activeItems.length === 0">You are done with all your tasks! Good job!</p>
+      <form v-on:submit.prevent="addItem">
+        <div class="form-item">
+	        <label>Task: </label>
+          <input type="text" v-model="text">
+        </div>
+        <div class="form-item">
+          <label>Priority: </label>
+          <select v-model="priority">
+            <option disabled value="">Select Priority</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="form-item">
+	       <button type="submit">Add</button>
+        </div>
+      </form>
+      <div class="controls">
+      	<button v-on:click="showAll()">Show All</button>
+      	<button v-on:click="showActive()">Show Active</button>
+      	<button v-on:click="showCompleted()">Show Completed</button>
+      	<button v-on:click="deleteCompleted()">Delete Completed</button>
+        <br/><br/>
+        <button v-on:click="sortList()">Sort List by Priority</button>
+      </div>
+      <ul class="list">
+      	<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+      	  <img v-on:click="move(item,'up')" class="arrow" src="img/up.png">
+          <img v-on:click="move(item,'down')" class="arrow" src="img/down.png">
+          <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)"/>
+          <label v-bind:class="{ completed: item.completed }">{{ item.text }} (priority {{item.priority}})</label>
+          <button v-on:click="deleteItem(item)" class="delete">X</button>
+      	</li>
+      </ul>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>
+    <script src="/script.js"></script>
+
+
+    <div class="footer">
+      <footer>
+        <p>Copyright &copy; 2018</p>
+        <p>Github Repository - <a href="https://github.com/BYU-CS260-Winter-2018/lab-4-tanlenon">Lab 4 - tlenon</a></p>
+      </footer> 
+    </div>
+
+  </body>
+  
+</html>
