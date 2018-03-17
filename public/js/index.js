@@ -46,6 +46,15 @@ var app = new Vue({
         sport: this.sport,
         logo: $('#hidden-logo').val(),
       }).then(response => {
+
+        if (this.mascot) {
+          alert("The " + this.mascot + " were added, Check out the teams page!");
+        } else {
+          alert("Your team was added, Check out the teams page!");
+        }
+
+        
+
         this.color1 = '#000000',
         this.color2 = '#000000',
         this.teamName = '',

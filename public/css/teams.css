@@ -16,6 +16,14 @@
     color: white !important;
 }
 
+.list {
+    margin: 20px 0 100px 0;
+    margin-bottom: 100px;
+}
+
+.page-header {
+    margin: 30px 0 20px 0;
+}
 
 
 body {
@@ -27,7 +35,7 @@ body {
 }
 
 #app {
-    padding: 20px 100px 0px 100px;
+    padding: 20px 100px 0px 50px;
     margin-bottom: -110px;
     min-height: 100%;
 }
@@ -45,13 +53,25 @@ ul {
 
 .list-item {
     background: #fff;
-    width: 500px;
-    min-height: 30px;
+    width: 100%;
+    min-height: 80px;
     padding: 10px;
     margin-bottom: 10px;
     font-size: 1em;
     display: flex;
     align-items: center;
+}
+
+.list-item-header {
+    background: #91AAB4;
+    width: 100%;
+    min-height: 80px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    color: white;
 }
 
 .delete {
@@ -90,7 +110,7 @@ button {
 /* Controls */
 
 .controls {
-    margin-top: 20px;
+    margin: 20px 0 0 40px;
 }
 
 .form-item {
@@ -98,13 +118,23 @@ button {
 }
 
 .sport {
-    height: 25px;
-    width: 25px;
-    margin: 0 10px;
+    height: 40px;
+    width: 40px;
+    margin: 0 30px;
 }
+
 
 .footer, #app:after {
     height: 110px;
+}
+
+.team-name {
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+.right-more {
+    margin-left:50px;
 }
 
 footer {
@@ -127,12 +157,13 @@ footer a:hover {
     color: #FCFFF5;;
 }
 
-.list {
-    margin-bottom: 100px;
-}
-
 .color-div {
     height: 50px;
-    width: 50px;
+    width: 150px;
     margin: -10px 10px;
+}
+
+.color-div-head {
+    height: 50px;
+    width: 150px;
 }

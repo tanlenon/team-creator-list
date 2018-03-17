@@ -30,58 +30,64 @@
         </form> -->
       </div>
     </nav>
-
-    <div id="app">
-      <h1>Team Creator</h1>
-      <!-- <p v-show="activeTeams.length === 0">You are done with all your tasks! Good job!</p> -->
-      <form class="form" v-on:submit.prevent="addTeam">
-
-        <div class="form-grooup">
-	        <label>Team Name: </label>
-          <input type="text" v-model="teamName">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12 col-lg-6">
+          <h4 class="side-text">This page allows you to add a team along with it's mascot and team colors to the team list! Go ahead and test it out and thencheck out the changes on the team list tab!<br/><br/>It sends every addition to the team list to the backend server. When deleted, it is removed from the server.<br/><br/>You can also send a request to the API on the server to get a lost of teams in JSON format.</h4>
         </div>
+        <div id="app" class="col-xs-12 col-lg-6">
+          <h1 class="page-header">Team Creator</h1>
+          <!-- <p v-show="activeTeams.length === 0">You are done with all your tasks! Good job!</p> -->
+          <form class="form" v-on:submit.prevent="addTeam">
 
-        <div class="form-group">
-          <label>Mascot: </label>
-          <input type="text" v-model="mascot">
+            <div class="form-grooup">
+    	        <label>Team Name: </label>
+              <input type="text" v-model="teamName">
+            </div>
+
+            <div class="form-group">
+              <label>Mascot: </label>
+              <input type="text" v-model="mascot">
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Team Color 1:</label>
+              <input type="color" id="c1" v-model="color1">
+            </div>
+
+            <div class="form-group">
+              <label for="usr">Team Color 2:</label>
+              <input type="color" id="c2" v-model="color2">
+            </div>
+
+    <!--         <div class="form-group">
+              <label for="usr">Team Logo:</label>
+              <input type="file" id="img-file-input" name="pic" accept="image/*">
+            </div>
+
+            <div class="form-group">
+              <input type="text" id="hidden-logo" hidden>
+            </div>
+     -->
+            <div class="form-group">
+              <label>Sport: </label>
+              <select v-model="sport">
+                <option disabled value="img/question-mark.png">Select Sport</option>
+                <option value="./../img/basket-ball.png">Basketball</option>
+                <option value="./../img/base-ball.png">Baseball</option>
+                <option value="./../img/foot-ball.png">Football</option>
+                <option value="./../img/soccer.png">Soccer</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+    	       <button type="submit">Add</button>
+            </div>
+
+          </form>
+
         </div>
-
-        <div class="form-group">
-          <label for="usr">Team Color 1:</label>
-          <input type="color" id="c1" v-model="color1">
-        </div>
-
-        <div class="form-group">
-          <label for="usr">Team Color 2:</label>
-          <input type="color" id="c2" v-model="color2">
-        </div>
-
-<!--         <div class="form-group">
-          <label for="usr">Team Logo:</label>
-          <input type="file" id="img-file-input" name="pic" accept="image/*">
-        </div>
-
-        <div class="form-group">
-          <input type="text" id="hidden-logo" hidden>
-        </div>
- -->
-        <div class="form-group">
-          <label>Sport: </label>
-          <select v-model="sport">
-            <option disabled value="img/question-mark.png">Select Sport</option>
-            <option value="./../img/basket-ball.png">Basketball</option>
-            <option value="./../img/base-ball.png">Baseball</option>
-            <option value="./../img/foot-ball.png">Football</option>
-            <option value="./../img/soccer.png">Soccer</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-	       <button type="submit">Add</button>
-        </div>
-
-      </form>
-
+      </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>

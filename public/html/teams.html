@@ -31,8 +31,8 @@
       </div>
     </nav>
 
-    <div id="app">
-      <h1>Team List</h1>
+    <div id="app" class="col-xs-12 offset-xl-2 col-xl-8">
+      <h1 class="page-header">Team List</h1>
       <!-- <p v-show="activeTeams.length === 0">You are done with all your tasks! Good job!</p> -->
 
       <div class="controls">
@@ -40,22 +40,33 @@
       	<button v-on:click="showActive()">Show Active</button>
       	<button v-on:click="showCompleted()">Show Completed</button>
       	<button v-on:click="deleteCompleted()">Delete Completed</button>
-        <br/><br/>
-        <button v-on:click="sortList()">Sort List by Priority</button> -->
+        <br/><br/> -->
+        <button v-on:click="sortByName()">Sort by Team Name</button>
+        <button v-on:click="sortByMascot()">Sort by Mascot</button>
       </div>
       <ul class="list">
+
+        <li class="list-item-header">
+
+          <label class="team-name">Team Name</label>
+          <div class="team-name">Team Color 1</div>
+          <div class="team-name">Team Color 2</div>
+          <div class="team-name ">Sport Type</div>
+
+        </li>
+
       	<li v-for="team in filteredTeams" draggable="true" v-on:dragstart="dragTeam(team)" v-on:dragover.prevent v-on:drop="dropTeam(team)" class="list-item">
       	  <!-- <img v-on:click="move(team,'up')" class="arrow" src="img/up.png">
           <img v-on:click="move(team,'down')" class="arrow" src="img/down.png"> -->
           <!-- <input type="checkbox" v-model="team.completed" v-on:click="completeTeam(team)"/> -->
-          <button v-on:click="deleteTeam(team)" class="delete">X</button>
-          <label>{{ team.teamName }} ({{team.mascot}})</label>
-
+          <label class="team-name">{{ team.teamName }} ({{team.mascot}})</label>
           <!-- <img class="sport" :src="team.logo"> -->
           <div class="color-div" :style="{ 'background-color': team.color1 }"></div>
           <div class="color-div" :style="{ 'background-color': team.color2 }"></div>
           <img class="sport" :src="team.sport">
+          <button v-on:click="deleteTeam(team)" class="delete">X</button>
       	</li>
+
       </ul>
     </div>
 

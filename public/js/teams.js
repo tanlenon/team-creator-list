@@ -101,9 +101,18 @@ var app = new Vue({
       }).catch(err => {
       });
     },
-    sortList: function() {
+    sortByName: function() {
       this.teams = this.teams.sort(function(a,b) {
-        return a.teamName - b.teamName;
+        if(a.teamName < b.teamName) return -1;
+        if(a.teamName > b.teamName) return 1;
+        return 0;
+      })
+    },
+    sortByMascot: function() {
+      this.teams = this.teams.sort(function(a,b) {
+        if(a.mascot < b.mascot) return -1;
+        if(a.mascot > b.mascot) return 1;
+        return 0;
       })
     },
     // move: function(team, direction) {
