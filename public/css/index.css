@@ -1,3 +1,23 @@
+.bg-light {
+    background-color: #91AAB4 !important;
+}
+
+.nav-link {
+    color: white !important;
+    text-align: center !important;
+}
+
+.active .nav-link{
+    background-color: white !important;
+    color: #193441 !important;
+}
+
+.navbar-light .navbar-brand {
+    color: white !important;
+}
+
+
+
 body {
     font-family: 'Arvo';
     font-size: 16px;
@@ -23,7 +43,7 @@ ul {
     list-style: none;
 }
 
-li {
+.list-item {
     background: #fff;
     width: 500px;
     min-height: 30px;

@@ -1,24 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css"/>
-    <title>Vue Todo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../css/index.css"/>
+    <title>Team Creator</title>
   </head>
   <body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Our Town Sports!</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="create-team.html">Create a Team <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> -->
+      </div>
+    </nav>
+
     <div id="app">
-      <h1>A List of Things To Do</h1>
+      <h1>Team Creator</h1>
       <p v-show="activeTeams.length === 0">You are done with all your tasks! Good job!</p>
       <form v-on:submit.prevent="addTeam">
-        <div class="form-team">
+
+        <div class="form-grooup">
 	        <label>Team Name: </label>
           <input type="text" v-model="teamName">
         </div>
-        <div class="form-team">
+
+        <div class="form-group">
           <label>Mascot: </label>
           <input type="text" v-model="mascot">
         </div>
-        <div class="form-team">
+
+        <div class="form-group">
+          <label for="usr">Team Color 1:</label>
+          <input type="color" id="c1" v-model="color1">
+        </div>
+
+        <div class="form-group">
+          <label for="usr">Team Color 2:</label>
+          <input type="color" id="c2" v-model="color2">
+        </div>
+
+
+        <div class="form-group">
           <label>Sport: </label>
           <select v-model="sport">
             <option disabled value="img/question-mark.png">Select Sport</option>
@@ -28,9 +67,11 @@
             <option value="img/soccer.png">Soccer</option>
           </select>
         </div>
-        <div class="form-team">
+
+        <div class="form-group">
 	       <button type="submit">Add</button>
         </div>
+
       </form>
       <div class="controls">
       	<!-- <button v-on:click="showAll()">Show All</button>
@@ -41,7 +82,7 @@
         <button v-on:click="sortList()">Sort List by Priority</button> -->
       </div>
       <ul class="list">
-      	<li v-for="team in filteredTeams" draggable="true" v-on:dragstart="dragTeam(team)" v-on:dragover.prevent v-on:drop="dropTeam(team)">
+      	<li v-for="team in filteredTeams" draggable="true" v-on:dragstart="dragTeam(team)" v-on:dragover.prevent v-on:drop="dropTeam(team)" class="list-item">
       	  <!-- <img v-on:click="move(team,'up')" class="arrow" src="img/up.png">
           <img v-on:click="move(team,'down')" class="arrow" src="img/down.png"> -->
           <!-- <input type="checkbox" v-model="team.completed" v-on:click="completeTeam(team)"/> -->
@@ -56,7 +97,13 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>
-    <script src="/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./../js//jscolor.js"></script>
+    <script src="./../js/index.js"></script>
+    <script>
+      
+    </script>
 
 
     <div class="footer">
