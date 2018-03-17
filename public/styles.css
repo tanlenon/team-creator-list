@@ -77,7 +77,7 @@ button {
     margin: 15px;
 }
 
-.arrow {
+.sport {
     height: 25px;
     width: 25px;
     margin: 0 10px;
@@ -109,4 +109,10 @@ footer a:hover {
 
 .list {
     margin-bottom: 100px;
+}
+
+.color-div {
+    height: 50px;
+    width: 50px;
+    margin: -10px 10px;
 }

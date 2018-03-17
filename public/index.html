@@ -8,40 +8,48 @@
   <body>
     <div id="app">
       <h1>A List of Things To Do</h1>
-      <p v-show="activeItems.length === 0">You are done with all your tasks! Good job!</p>
-      <form v-on:submit.prevent="addItem">
-        <div class="form-item">
-	        <label>Task: </label>
-          <input type="text" v-model="text">
+      <p v-show="activeTeams.length === 0">You are done with all your tasks! Good job!</p>
+      <form v-on:submit.prevent="addTeam">
+        <div class="form-team">
+	        <label>Team Name: </label>
+          <input type="text" v-model="teamName">
         </div>
-        <div class="form-item">
-          <label>Priority: </label>
-          <select v-model="priority">
-            <option disabled value="">Select Priority</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+        <div class="form-team">
+          <label>Mascot: </label>
+          <input type="text" v-model="mascot">
+        </div>
+        <div class="form-team">
+          <label>Sport: </label>
+          <select v-model="sport">
+            <option disabled value="img/question-mark.png">Select Sport</option>
+            <option value="img/basket-ball.png">Basketball</option>
+            <option value="img/base-ball.png">Baseball</option>
+            <option value="img/foot-ball.png">Football</option>
+            <option value="img/soccer.png">Soccer</option>
           </select>
         </div>
-        <div class="form-item">
+        <div class="form-team">
 	       <button type="submit">Add</button>
         </div>
       </form>
       <div class="controls">
-      	<button v-on:click="showAll()">Show All</button>
+      	<!-- <button v-on:click="showAll()">Show All</button>
       	<button v-on:click="showActive()">Show Active</button>
       	<button v-on:click="showCompleted()">Show Completed</button>
       	<button v-on:click="deleteCompleted()">Delete Completed</button>
         <br/><br/>
-        <button v-on:click="sortList()">Sort List by Priority</button>
+        <button v-on:click="sortList()">Sort List by Priority</button> -->
       </div>
       <ul class="list">
-      	<li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
-      	  <img v-on:click="move(item,'up')" class="arrow" src="img/up.png">
-          <img v-on:click="move(item,'down')" class="arrow" src="img/down.png">
-          <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)"/>
-          <label v-bind:class="{ completed: item.completed }">{{ item.text }} (priority {{item.priority}})</label>
-          <button v-on:click="deleteItem(item)" class="delete">X</button>
+      	<li v-for="team in filteredTeams" draggable="true" v-on:dragstart="dragTeam(team)" v-on:dragover.prevent v-on:drop="dropTeam(team)">
+      	  <!-- <img v-on:click="move(team,'up')" class="arrow" src="img/up.png">
+          <img v-on:click="move(team,'down')" class="arrow" src="img/down.png"> -->
+          <!-- <input type="checkbox" v-model="team.completed" v-on:click="completeTeam(team)"/> -->
+          <label>{{ team.teamName }} ({{team.mascot}})</label>
+          <div class="color-div" :style="{ 'background-color': team.color1 }"></div>
+          <div class="color-div" :style="{ 'background-color': team.color2 }"></div>
+          <img class="sport" :src="team.sport">
+          <button v-on:click="deleteTeam(team)" class="delete">X</button>
       	</li>
       </ul>
     </div>

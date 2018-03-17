@@ -1,65 +1,62 @@
 var app = new Vue({
   el: '#app',
   data: {
-    items: [],
-    text: '',
+    teams: [],
     show: 'all',
     drag: {},
-    priority: 1,
+    color1: '#000',
+    color2: '#000',
+    teamName: '',
+    mascot: '',
+    sport: 'img/question-mark.png',
   },
   created:function() {
-    this.getItems();
+    this.getTeams();
   },
   computed: {
-    activeItems: function() {
-      return this.items.filter(function(item) {
-	      return !item.completed;
+    activeTeams: function() {
+      return this.teams.filter(function(team) {
+	      return !team.completed;
       });
     },
-    filteredItems: function() {
+    filteredTeams: function() {
       if (this.show === 'active')
-	      return this.items.filter(function(item) {
-	        return !item.completed;
+	      return this.teams.filter(function(team) {
+	        return !team.completed;
 	  });
       if (this.show === 'completed')
-	      return this.items.filter(function(item) {
-	        return item.completed;
+	      return this.teams.filter(function(team) {
+	        return team.completed;
 	  });
-      return this.items;
+      return this.teams;
     },
     created: function() {
-      this.getItems();
+      this.getTeams();
     },
   },
   methods: {
-    addItem: function() {
+    addTeam: function() {
 
-      axios.post("/api/items", {
-        text: this.text ? this.text : "blank",
-        priority: this.priority,
-        completed: false
+      axios.post("/api/teams", {
+        teamName: this.teamName ? this.teamName : "blank",
+        color1: this.color1,
+        color2: this.color2,
+        mascot: this.mascot ? this.mascot : "blank",
+        sport: this.sport,
       }).then(response => {
-        this.text = "";
-        this.priority = 1;
-        this.getItems();
+        this.color1 = '#000',
+        this.color2 = '#000',
+        this.teamName = '',
+        this.mascot = '',
+        this.sport = 'img/question-mark.png',
+        this.getTeams();
         return true;
       }).catch(err => {
       });
     },
-    completeItem: function(item) {
-      axios.put("/api/items/" + item.id, {
-        text: item.text,
-        priority: item.priority,
-        completed: !item.completed,
-        orderChange: false,
-      }).then(response => {
-        return true;
-      }).catch(err => {
-      });
-    },
-    deleteItem: function(item) {
-      axios.delete("/api/items/" + item.id).then(response => {
-        this.getItems();
+    deleteTeam: function(team) {
+      axios.delete("/api/teams/" + team.id).then(response => {
+        this.getTeams();
         return true;
       }).catch(err => {
       });
@@ -74,68 +71,71 @@ var app = new Vue({
       this.show = 'completed';
     },
     deleteCompleted: function() {
-      this.items.forEach(item => {
-        if (item.completed)
-          this.deleteItem(item)
+      this.teams.forEach(team => {
+        if (team.completed)
+          this.deleteTeam(team)
       });
     },
-    dragItem: function(item) {
-      this.drag = item;
+    dragTeam: function(team) {
+      this.drag = team;
     },
-    dropItem: function(item) {
-      axios.put("/api/items/" + this.drag.id, {
-        text: this.drag.text,
-        completed: this.drag.completed,
+    dropTeam: function(team) {
+      axios.put("/api/teams/" + this.drag.id, {
+        color1: this.drag.color1,
+        color2: this.drag.color2,
+        teamName: this.drag.teamName,
+        mascot: this.drag.mascot,
+        sport: this.drag.sport,
         orderChange: true,
-        orderTarget: item.id
+        orderTarget: team.id
       }).then(response => {
-        this.getItems();
+        this.getTeams();
         return true;
       }).catch(err => {
       });
     },
-    getItems: function() {
-      axios.get("/api/items").then(response => {
-        this.items = response.data;
+    getTeams: function() {
+      axios.get("/api/teams").then(response => {
+        this.teams = response.data;
         return true;
       }).catch(err => {
       });
     },
     sortList: function() {
-      this.items = this.items.sort(function(a,b) {
-        return b.priority - a.priority;
+      this.teams = this.teams.sort(function(a,b) {
+        return a.teamName - b.teamName;
       })
     },
-    move: function(item, direction) {
+    // move: function(team, direction) {
 
-      axios.put("/api/items/" + item.id, {
-        text: item.text,
-        priority: (function() {
+    //   axios.put("/api/teams/" + team.id, {
+    //     text: team.text,
+    //     priority: (function() {
 
-          var priority = parseInt(item.priority);
+    //       var priority = parseInt(team.priority);
 
-          if(direction === "up") {
-            if(priority < 3) {
-              return priority + 1;
-            }
-            return priority;
+    //       if(direction === "up") {
+    //         if(priority < 3) {
+    //           return priority + 1;
+    //         }
+    //         return priority;
 
-          } else if(direction === "down") {
-            if(priority > 1) {
-              return priority - 1;
-            }
-            return priority;
-          }
+    //       } else if(direction === "down") {
+    //         if(priority > 1) {
+    //           return priority - 1;
+    //         }
+    //         return priority;
+    //       }
 
-        })(),
+    //     })(),
 
-        completed: item.completed,
-        orderChange: false,
-      }).then(response => {
-        this.getItems();
-        return true;
-      }).catch(err => {
-      });
-    },
+    //     completed: team.completed,
+    //     orderChange: false,
+    //   }).then(response => {
+    //     this.getTeams();
+    //     return true;
+    //   }).catch(err => {
+    //   });
+    // },
   }
 });
